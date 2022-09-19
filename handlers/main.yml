@@ -2,7 +2,7 @@
 
 - name: restart docker
   service:
-    name: docker
+    name: {{ docker_service_name }}
     state: restarted
 
 - name: clean yum cache
@@ -12,6 +12,7 @@
 
 - name: refresh docker host info
   community.docker.docker_host_info:
+  docker_host: "unix:///var/run/{{ docker_service_name }}.sock"
   check_mode: no
   changed_when: false
   register: docker_info
