@@ -34,7 +34,7 @@
 
     - name: Reload systemd and restart Docker.
       service:
-        name: {{ docker_service_name }}
+        name: "{{ docker_service_name }}"
         state: "{% if docker_service_state != 'stopped' %}restarted{% else %}stopped{% endif %}"
         daemon_reload: yes
       when: _docker_systemd_override.changed
@@ -44,7 +44,7 @@
 
 - name: Make sure the Docker daemon configuration directory exists.
   file:
-    path: /etc/{{ docker_service_name }}
+    path: "/etc/{{ docker_service_name }}"
     owner: root
     group: root
     mode: 0755
@@ -53,7 +53,7 @@
 - name: Configure the Docker deamon.
   template:
     src: docker-daemon.json.j2
-    dest: /etc/{{ docker_service_name }}/daemon.json
+    dest: "/etc/{{ docker_service_name }}/daemon.json"
     owner: root
     group: root
     mode: 0640
@@ -63,7 +63,7 @@
 
 - name: Enable the Docker daemon service and start it.
   service:
-    name: {{ docker_service_name }}
+    name: "{{ docker_service_name }}"
     state: "{{ docker_service_state }}"
     enabled: "{{ docker_service_enabled }}"
 
