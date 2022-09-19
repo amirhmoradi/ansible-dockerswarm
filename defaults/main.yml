@@ -27,7 +27,7 @@ docker_package_state: present
 docker_dependencies: "{{ default_docker_dependencies }}"
 
 # Service Name, to allow multiple docker daemons using different services
-docker_service_name: "{{ docker }}"
+docker_service_name: "docker"
 
 # Contect written to the systemd unit drop-in overriding
 # the default Docker service definition.
