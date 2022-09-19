@@ -26,6 +26,9 @@ docker_package_state: present
 # e.g. linux-image-extra-virtual on some Debian systems
 docker_dependencies: "{{ default_docker_dependencies }}"
 
+# Service Name, to allow multiple docker daemons using different services
+docker_service_name: "{{ docker }}"
+
 # Contect written to the systemd unit drop-in overriding
 # the default Docker service definition.
 docker_service_override: ""
