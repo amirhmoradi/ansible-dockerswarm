@@ -26,6 +26,9 @@ docker_package_state: present
 # e.g. linux-image-extra-virtual on some Debian systems
 docker_dependencies: "{{ default_docker_dependencies }}"
 
+# Docker network bridge name
+docker_bridge_name: "docker0"
+
 # Service Name, to allow multiple docker daemons using different services
 docker_service_name: "docker"
 
